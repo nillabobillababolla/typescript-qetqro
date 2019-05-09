@@ -2,6 +2,7 @@
 import { of } from 'rxjs';
 import { fromEvent } from 'rxjs';
 import { map,filter,debounceTime,take,concat,mergeMap } from 'rxjs/operators';
+import { BounceBall } from './Ball';
 /*
  *  'of' allows you to deliver values in a sequence
  *  In this case, it will emit 1,2,3,4,5 in order.
@@ -42,3 +43,19 @@ const subscription3 = formEvents
     map(btnClick => console.log("Button Clicked"))
   )
   .subscribe();
+  
+// Try uncommenting the line below :)
+// import pad from 'left-pad'; alert(pad);
+ 
+// Set gravity effect on the ball.
+// 1 = Earth, .16 = Moon, 2 = Jupiter.
+const GRAVITY = 1;
+
+// Color of the ball.
+const COLOR = 'deepskyblue';
+
+// Bounce the ball!
+BounceBall({
+  color: COLOR,
+  gravity: GRAVITY
+});
