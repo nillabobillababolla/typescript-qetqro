@@ -1,6 +1,7 @@
 // import operators.
 import { of } from 'rxjs';
-import { map,filter,debounceTime,take,concat } from 'rxjs/operators';
+import { fromEvent } from 'rxjs';
+import { map,filter,debounceTime,take,concat,mergeMap } from 'rxjs/operators';
 /*
  *  'of' allows you to deliver values in a sequence
  *  In this case, it will emit 1,2,3,4,5 in order.
@@ -33,3 +34,11 @@ const subscription2=dataSource2.pipe(
 )).subscribe(values => {
   console.log(values);
 });
+
+const button = document.getElementById("myBtn");
+const formEvents = fromEvent(button, 'click');
+const subscription3 = formEvents
+  .pipe(
+    map(btnClick => console.log("Button Clicked"))
+  )
+  .subscribe();
